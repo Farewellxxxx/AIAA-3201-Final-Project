@@ -1,0 +1,7 @@
+{
+  "focus_threshold_relative": 2.67763090133667,
+  "focus_quantile": 0.85,
+  "transition": 0.835693244934082,
+  "sigma_pixels": 9,
+  "mean_absolute_rgb_change_0_255": 11.336610987103175
+}

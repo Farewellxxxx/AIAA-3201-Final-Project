@@ -1,0 +1,27 @@
+# Downloaded assets and local runtime
+.deps/
+.cache/
+.venv/
+data/
+checkpoints/
+third_party/
+__pycache__/
+*.pyc
+*.npy
+*.npz
+*.part
+tmp/
+submission/
+.env
+.env.*
+*.pem
+*.key
+# Generated inference caches and diagnostic runs
+results/nyu/predictions/
+results/video_518_diagnostic/
+# LaTeX temporary files
+*.aux
+*.log
+*.out
+*.bbl
+*.blg

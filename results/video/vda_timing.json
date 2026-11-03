@@ -1,0 +1,22 @@
+{
+  "model": "Video Depth Anything-S",
+  "seconds_total": 3.3277592999984336,
+  "seconds_per_source_frame": 0.04753941857140619,
+  "fps_effective": 21.03517523038188,
+  "peak_allocated_MB": 1319.287808,
+  "peak_reserved_MB": 1604.32128,
+  "network_shapes": [
+    [
+      32,
+      3,
+      294,
+      518
+    ]
+  ],
+  "normalization": [
+    0.0,
+    6.964110374450684
+  ],
+  "checkpoint_bytes": 116440756,
+  "timing_scope": "official inference pipeline, excludes warmup, loading and visualization"
+}

@@ -1,0 +1,66 @@
+{
+  "third_party/UniDepth": {
+    "url": "https://codeload.github.com/lpiccinelli-eth/UniDepth/zip/8d8cfe4c7ee15297099983607febf0d4f32eb3d6",
+    "commit": "8d8cfe4c7ee15297099983607febf0d4f32eb3d6",
+    "archive_sha256": "13c18be74e92fbca16df63d7456471939e8748f1960b60e881d756bd912e854f"
+  },
+  "third_party/Depth-Anything-V2": {
+    "url": "https://codeload.github.com/DepthAnything/Depth-Anything-V2/zip/a561b849ebae10a6f5ef49e26c83cbbcd36c71bf",
+    "commit": "a561b849ebae10a6f5ef49e26c83cbbcd36c71bf",
+    "archive_sha256": "0022639d5b23499329ca4fd29a92993e86b52fdfe9aaf21df683383136e91b65"
+  },
+  "third_party/Video-Depth-Anything": {
+    "url": "https://codeload.github.com/DepthAnything/Video-Depth-Anything/zip/4f5ae23172ba60fd7bc11ef671cca678842c7072",
+    "commit": "4f5ae23172ba60fd7bc11ef671cca678842c7072",
+    "archive_sha256": "012dc88e5feb7e51f5794f9b8013f4c786aa3d61c60b8e0c3c5a45e1e0feb7c5"
+  },
+  "third_party/author-kit": {
+    "url": "https://codeload.github.com/cvpr-org/author-kit/zip/a2369342011145be8c85e5ad21a9b61f9fa53473",
+    "commit": "a2369342011145be8c85e5ad21a9b61f9fa53473",
+    "archive_sha256": "5d8e151fc9abdd6e641bc30571c40b762a1998f1b8c441ec25d9a5f3deb8d303"
+  },
+  "data/downloads/MiddEval3-data-Q.zip": {
+    "url": "https://vision.middlebury.edu/stereo/submit3/zip/MiddEval3-data-Q.zip",
+    "bytes": 30937533,
+    "sha256": "a1411f283b523541e0d2e8b3a1dd6618974a0e539aea0122490791a041fffc09"
+  },
+  "data/downloads/MiddEval3-GT0-Q.zip": {
+    "url": "https://vision.middlebury.edu/stereo/submit3/zip/MiddEval3-GT0-Q.zip",
+    "bytes": 13555667,
+    "sha256": "489b6a4015951a3c865aa54c0f37dcb648b5d0efad8019264e22499cef35ca45"
+  },
+  "data/nyu/splits.mat": {
+    "url": "https://horatio.cs.nyu.edu/mit/silberman/indoor_seg_sup/splits.mat",
+    "bytes": 2626,
+    "sha256": "6e081404491a8bfba2f066beaa9713ef6046f9007aa5f799f2a350506a580cee"
+  },
+  "data/nyu/nyu_depth_v2_labeled.mat": {
+    "url": "https://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/nyu_depth_v2_labeled.mat",
+    "bytes": 2972037809,
+    "sha256": "2d724b0c0ab358aa1ce5df855e5bd14a2279ab7202efe22f32a30d612dcb86aa"
+  },
+  "checkpoints/unidepth-v2-vits14/config.json": {
+    "url": "https://huggingface.co/lpiccinelli/unidepth-v2-vits14/resolve/038c238f06c87b6c2f5b3749fd51fbf442b1f218/config.json",
+    "bytes": 3483,
+    "sha256": "ecc1f898690debe387d10329cca5d9d66a0a447ce83c3a2a7ae3673c7ce43cfe",
+    "revision": "038c238f06c87b6c2f5b3749fd51fbf442b1f218"
+  },
+  "checkpoints/unidepth-v2-vits14/model.safetensors": {
+    "url": "https://huggingface.co/lpiccinelli/unidepth-v2-vits14/resolve/038c238f06c87b6c2f5b3749fd51fbf442b1f218/model.safetensors",
+    "bytes": 136777580,
+    "sha256": "93705cb3295dd7476b44911b8a55f5215bf74e8d5eccd27cecdb1b338270a648",
+    "revision": "038c238f06c87b6c2f5b3749fd51fbf442b1f218"
+  },
+  "checkpoints/depth_anything_v2_vits.pth": {
+    "url": "https://huggingface.co/depth-anything/Depth-Anything-V2-Small/resolve/03876f8651c73a60fe4c2c48294e09fcb6838fcf/depth_anything_v2_vits.pth",
+    "bytes": 99218434,
+    "sha256": "715fade13be8f229f8a70cc02066f656f2423a59effd0579197bbf57860e1378",
+    "revision": "03876f8651c73a60fe4c2c48294e09fcb6838fcf"
+  },
+  "checkpoints/video_depth_anything_vits.pth": {
+    "url": "https://huggingface.co/depth-anything/Video-Depth-Anything-Small/resolve/256875362cff76724b920335dfb4b29dd611f66e/video_depth_anything_vits.pth",
+    "bytes": 116440756,
+    "sha256": "13379300b739e659f076a59d52e9801bd8d38c541a7e71f73bbca4dcfb013609",
+    "revision": "256875362cff76724b920335dfb4b29dd611f66e"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "input_size": 294,
+  "max_res": 640,
+  "requested_frames": 100,
+  "frames": 70,
+  "fps": 24.0,
+  "short_source_disclosed": true,
+  "source": "davis_rollercoaster.mp4",
+  "frame_shape": [
+    360,
+    640,
+    3
+  ],
+  "precision": "CUDA FP16 autocast",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "torch": "2.7.1+cu118",
+  "relative_depth": true
+}
