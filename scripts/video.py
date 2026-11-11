@@ -4,16 +4,7 @@ add_repo('Depth-Anything-V2');add_repo('Video-Depth-Anything')
 import argparse,gc,json,time
 import cv2,numpy as np,torch
 from depth_project.protocol import fixed_range,validate_clip_length
-
-def colorize(depth,limits):
-    lo,hi=limits
-    normal=np.clip((depth-lo)/max(hi-lo,1e-8),0,1)
-    return cv2.cvtColor(cv2.applyColorMap(np.round(normal*255).astype(np.uint8),cv2.COLORMAP_INFERNO),cv2.COLOR_BGR2RGB)
-
-def panel(image,label):
-    bar=np.full((38,image.shape[1],3),22,dtype=np.uint8)
-    cv2.putText(bar,label,(12,25),cv2.FONT_HERSHEY_SIMPLEX,.56,(245,245,245),1,cv2.LINE_AA)
-    return np.concatenate([bar,image],axis=0)
+from depth_project.video_render import colorize,comparison_row,panel,source_sha256,write_depth_metadata
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--input-size',type=int,default=518)
@@ -24,6 +15,7 @@ def main():
     source=ROOT/'third_party/Video-Depth-Anything/assets/example_videos/davis_rollercoaster.mp4'
     frames,fps=read_video_frames(str(source),100,-1,640)
     count=validate_clip_length(len(frames),args.allow_short_clip)
+    digest=source_sha256(source)
     out=ROOT/'results/video';out.mkdir(parents=True,exist_ok=True)
     config={'input_size':args.input_size,'max_res':640,'requested_frames':100,'frames':count,'fps':float(fps),
             'short_source_disclosed':count<100,
@@ -82,6 +74,7 @@ def main():
                 'normalization':fixed_range(depths),'checkpoint_bytes':(ROOT/'checkpoints'/weight).stat().st_size,
                 'timing_scope':'official inference pipeline, excludes warmup, loading and visualization'}
         np.savez_compressed(saved,depths=depths.astype(np.float32))
+        write_depth_metadata(saved,digest,fps,count)
         statfile.write_text(json.dumps(record,indent=2));arrays[name]=depths;stats[name]=record
         handle.remove();del model;gc.collect();torch.cuda.empty_cache()
         print(record,flush=True)
@@ -96,7 +89,7 @@ def main():
     for i,frame in enumerate(frames):
         da=colorize(arrays['dav2'][i],stats['dav2']['normalization'])
         vd=colorize(arrays['vda'][i],stats['vda']['normalization'])
-        row=np.concatenate([panel(frame,'RGB input'),panel(da,'Depth Anything V2-S | relative'),panel(vd,'Video Depth Anything-S | relative')],axis=1)
+        row=comparison_row(frame,da,vd)
         comparison.write(cv2.cvtColor(row,cv2.COLOR_RGB2BGR))
         alpha=np.clip((focus-arrays['vda'][i])/transition,0,1)[...,None]
         alpha=alpha*alpha*(3-2*alpha)

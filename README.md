@@ -1,14 +1,16 @@
 # AIAA 3201 Final Project — Monocular Metric Depth & Video Consistency
 
 本仓库用于两人的 Project 3 协作，依据 2026-11-02 更新的作业要求。
-**当前阶段是 Part 1 / Part 2 复现；Part 3 改进暂缓，未包含在本次提交中。**
+**当前阶段是 Part 2 复现与 Part 1 交接。**
 
 | 成员 | 当前负责部分 |
 |---|---|
 | **Yongru CHEN** | Part 1：StereoSGBM 几何练习及逐帧深度基线 |
 | **Wenhan XU** | Part 2：UniDepthV2 米制深度复现及 Video Depth Anything 视频深度复现 |
 
-Part 1 脚本作为共享参考实现保留，后续由对应负责人检查、修改和整合。
+Part 1 脚本作为共享参考。交接目录、视频数据格式和合成命令见
+[Yongru 与 Wenhan 的交接说明](docs/team-handoff.md)。
+Part 3 的备选方案见[作业 A–F 拓展方向](docs/part3-directions.md)。
 Part 2 使用官方预训练 Small 模型，不训练模型、不拟合尺度、不使用测试真值校正预测。
 整份项目最终提交仍需 Part 3 的一种改进和完整报告；本仓库当前状态不代表最终作业已提交。
 
@@ -62,6 +64,7 @@ python scripts/video.py --input-size 294 --allow-short-clip
 要求完整覆盖 654 张测试图，输出到 `results/nyu/baseline/`。
 `video.py` 同时产生逐帧基线、视频模型对比和一个已有的背景虚化演示；
 应用演示不改变深度模型，也不作为 Part 3 改进结论。
+已有两套原始深度时，可用 `scripts/compose_video.py` 在 CPU 上独立合成三列视频。
 
 Yongru 的 Part 1 几何练习可独立运行：
 
@@ -125,16 +128,19 @@ depth_project/           几何、掩膜、指标与数据读取
 scripts/nyu.py           官方 UniDepthV2 RGB-only 推理
 scripts/evaluate_baseline.py  Part 2 原始尺度评估
 scripts/video.py         DA V2 / VDA 同帧比较
+scripts/compose_video.py 合成已有两套视频深度
 scripts/stereo.py        Part 1 共享参考实现
 tests/                  协议与复现检查
 results/nyu/baseline/    原始测试指标、逐图 CSV 与困难案例
 results/video/           对比视频、截图、配置与计时记录
 docs/part2.md            当前阶段的操作和分析说明
+docs/team-handoff.md     Part 1 目录、视频交接格式和合成命令
+docs/part3-directions.md  作业的六个拓展方向
 ```
 
 完整原始深度由脚本生成到 `results/nyu/predictions/` 和 `results/video/*.npz`，
 本机已保存的原始预测仍保留在原实验目录中。仓库仅提交轻量结果及演示视频。
-最终报告和 `depth_results.zip` 待分工整合后另行准备，本次不上传此前包含改进的报告。
+最终报告和 `depth_results.zip` 在两部分结果核对后统一整理。
 
 ## 来源与引用
 
