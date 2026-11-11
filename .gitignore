@@ -18,6 +18,7 @@ submission/
 *.key
 # Generated inference caches and diagnostic runs
 results/nyu/predictions/
+results/video/*_depths.json
 results/video_518_diagnostic/
 # LaTeX temporary files
 *.aux
