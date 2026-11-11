@@ -5,13 +5,13 @@
 
 | 部分 | 负责人 | 当前进度与入口 |
 |---|---|---|
-| Part 1 | **Yongru CHEN** | 接入 Middlebury 双目结果和逐帧 DA V2。见[交接说明](docs/team-handoff.md) |
+| Part 1 | **Yongru CHEN** | Middlebury StereoSGBM 指标与代表图已整理；视频帧式 DA V2 基线与 70 帧限制见 [Part 1 报告](docs/part1.md) |
 | Part 2 | **Wenhan XU** | NYU 654 张测试图的米制评估和 VDA 视频复现已完成。见[复现说明](docs/part2.md) |
 | Part 3 | 小组讨论 | [作业 PDF 的 A–F 拓展方向](docs/part3-directions.md) |
 
-Yongru 可以把交接说明直接交给 Codex，从最新版 `main` 开 Part 1 分支。
-把双目图表和指标整理到 `results/stereo/`，逐帧 DA V2 深度按交接格式准备，
-再开 PR 合入小组结果。
+Part 1 指标、代表性结果图和可复现的 StereoSGBM 入口位于 `results/stereo/`
+和 `scripts/stereo_part1.py`。逐帧 DA V2 深度的 NPZ/JSON 按[交接说明](docs/team-handoff.md)
+保存在本地，不提交到 Git；与 Part 2 的 VDA 数组对齐后可生成最终三列视频。
 
 ## Part 2：你要运行的内容
 
