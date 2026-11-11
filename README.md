@@ -1,18 +1,17 @@
 # AIAA 3201 Final Project — Monocular Metric Depth & Video Consistency
 
 本仓库用于两人的 Project 3 协作，依据 2026-11-02 更新的作业要求。
-**当前阶段是 Part 2 复现与 Part 1 交接。**
+**Part 2 复现结果和协作入口已合入 `main`。**
 
-| 成员 | 当前负责部分 |
-|---|---|
-| **Yongru CHEN** | Part 1：StereoSGBM 几何练习及逐帧深度基线 |
-| **Wenhan XU** | Part 2：UniDepthV2 米制深度复现及 Video Depth Anything 视频深度复现 |
+| 部分 | 负责人 | 当前进度与入口 |
+|---|---|---|
+| Part 1 | **Yongru CHEN** | 接入 Middlebury 双目结果和逐帧 DA V2。见[交接说明](docs/team-handoff.md) |
+| Part 2 | **Wenhan XU** | NYU 654 张测试图的米制评估和 VDA 视频复现已完成。见[复现说明](docs/part2.md) |
+| Part 3 | 小组讨论 | [作业 PDF 的 A–F 拓展方向](docs/part3-directions.md) |
 
-Part 1 脚本作为共享参考。交接目录、视频数据格式和合成命令见
-[Yongru 与 Wenhan 的交接说明](docs/team-handoff.md)。
-Part 3 的备选方案见[作业 A–F 拓展方向](docs/part3-directions.md)。
-Part 2 使用官方预训练 Small 模型，不训练模型、不拟合尺度、不使用测试真值校正预测。
-整份项目最终提交仍需 Part 3 的一种改进和完整报告；本仓库当前状态不代表最终作业已提交。
+Yongru 可以把交接说明直接交给 Codex，从最新版 `main` 开 Part 1 分支。
+把双目图表和指标整理到 `results/stereo/`，逐帧 DA V2 深度按交接格式准备，
+再开 PR 合入小组结果。
 
 ## Part 2：你要运行的内容
 
@@ -64,7 +63,6 @@ python scripts/video.py --input-size 294 --allow-short-clip
 要求完整覆盖 654 张测试图，输出到 `results/nyu/baseline/`。
 `video.py` 同时产生逐帧基线、视频模型对比和一个已有的背景虚化演示；
 应用演示不改变深度模型，也不作为 Part 3 改进结论。
-已有两套原始深度时，可用 `scripts/compose_video.py` 在 CPU 上独立合成三列视频。
 
 Yongru 的 Part 1 几何练习可独立运行：
 
@@ -75,6 +73,15 @@ python scripts/stereo.py
 两种视频模型的实际输入均为 **294×518**，输出为 **360×640**。
 若更改设置，请使用独立结果目录或先备份旧输出，不能混用不同设置的缓存。
 默认 video 参数为 518；本机显存配置的复现命令明确使用 294。
+
+## 用已有深度合成视频
+
+两份深度 NPZ 及对应 JSON 齐备时，从仓库根目录运行下面的命令。
+合成在 CPU 上完成，输出到 `tmp/`。输入格式和旧缓存用法见[交接说明](docs/team-handoff.md#视频文件约定)。
+
+```bash
+python scripts/compose_video.py --source third_party/Video-Depth-Anything/assets/example_videos/davis_rollercoaster.mp4 --dav2 results/video/dav2_depths.npz --vda results/video/vda_depths.npz --output tmp/rgb_depth_comparison.mp4
+```
 
 ## 已记录的原始复现结果
 
